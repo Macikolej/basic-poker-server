@@ -1,5 +1,19 @@
 {
+  "name": "basic-poker-server",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Macikolej/basic-poker-server.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "homepage": "https://github.com/Macikolej/basic-poker-server#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   }
 }
