@@ -28,11 +28,7 @@ app.post("/join", (req, res) => {
   if (games[gameId].players === 4) {
     games[gameId].status = 'full-lobby';
   }
-  let response = games[gameId]
-  Object.assign(response, {joined: joined})
-  res.json(
-    response,
-  )
+  res.json({ ...games[gameId], joined })
 });
 
 app.post("/player", (req, res) => {
@@ -50,10 +46,7 @@ app.post("/player", (req, res) => {
       gameUserId: null,
     }
   }
-  Object.assign(response, {joined: knownPlayers[id].gameId != null})
-  res.json(
-    response,
-  )
+  res.json({ ...response, joined: knownPlayers[id].gameId != null })
 });
 
 app.get("/game", (req, res) => {
