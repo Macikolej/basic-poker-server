@@ -49,6 +49,21 @@ app.post("/player", (req, res) => {
   res.json({ ...response, joined: knownPlayers[id].gameId != null })
 });
 
+app.get("/reset", (req, res) => {
+  res.json({status: 'none', joined: false});
+});
+
+app.post("/start", (req, res) => {
+  const user_id = req.query.userId;
+  const game = games[knownPlayers[user_id].gameId];
+
+  if (game.players >= game.maxPlayers / 2) {
+    game.status = 'inProgress'
+  }
+
+  res.json(game);
+});
+
 app.get("/game", (req, res) => {
   let foundGame = null;
   for (let i = 0; i < games.length; i ++) {
